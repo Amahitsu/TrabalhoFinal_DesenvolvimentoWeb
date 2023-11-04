@@ -5,12 +5,10 @@
 <template>
 
 <div>
-    <router-link to="/"></router-link> |
+    <router-link to="/">Rela principal </router-link> |
     <router-link to="/Carrinho">Carrinho</router-link> |
-    <router-link to="/Detalhe do Produto">DetalheProduto</router-link> |
-    <router-link to="/Confirmar Compra">ConfirmarCompra</router-link> |
-
-
+    <router-link to="/DetalhedoProduto">Detalhe do Produto</router-link> |
+    <router-link to="/ConfirmarCompra">Confirmar Compra</router-link> |
   </div>
 
   <router-view></router-view>
