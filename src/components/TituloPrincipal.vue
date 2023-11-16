@@ -1,10 +1,10 @@
 <script setup>
-defineProps(['Geektopia'])
+defineProps(['title'])
 
 </script>
 
 <template>
-  <h1>{{ Geektopia }}</h1>
+  <h1>{{ title }}</h1>
 
 </template>
 

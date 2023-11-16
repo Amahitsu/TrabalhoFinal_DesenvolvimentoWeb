@@ -1,19 +1,68 @@
-<script>
-import Titulo from '../components/Titulo.vue';
-import {ref} from 'vue'
+<script setup>
+import TituloPrincipal from "../components/TituloPrincipal.vue";
+import { ref } from "vue";
+import ExibirProduto from "../components/ExibirProduto.vue";
 
-const titulo = ref('Geek')
-
+const titulo = ref("Mercado online para mangás");
+const produtos = ref([
+  {
+  title: "rick and morty",
+  url: "https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg"
+},
+{
+  title: "rick and morty",
+  url: "https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg"
+},
+{
+  title: "rick and morty",
+  url: "https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg"
+},
+{
+  title: "rick and morty",
+  url: "https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg"
+},
+{
+  title: "rick and morty",
+  url: "https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg"
+},
+{
+  title: "rick and morty",
+  url: "https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg"
+},
+{
+  title: "rick and morty",
+  url: "https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg"
+}
+]);
 </script>
 
 <template>
-    <div>
-      <Titulo title="titulo"/>
-      <Titulo :title="titulo"/>
-    </div>
+  <div>
+    <titulo-principal title="MangaTown" />
+    <titulo-principal :title="titulo" />
 
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-12" v-for="produto in produtos">
+        <ExibirProduto
+          :imageTitle="produto.title"
+          :imageUrl="produto.url"
+        />
+      </div>
+    </div>
+  </div>
 </template>
 
 <style>
-
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+}
 </style>
