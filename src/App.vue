@@ -30,8 +30,6 @@
   </div>
 
 </nav>
-    <router-link to="/Carrinho">Carrinho</router-link> |
-    <router-link to="/DetalhedoProduto">Detalhe do Produto</router-link> |
 
 
   <router-view></router-view>

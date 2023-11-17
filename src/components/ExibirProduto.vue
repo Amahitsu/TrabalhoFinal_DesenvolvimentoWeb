@@ -14,6 +14,11 @@ const props = defineProps({
       <h3 class="py-2 fs-2 fw-bolder"> {{ imageTitle }}</h3>
     </span>
 
-    <button class="btn btn-primary btn-lg m-3">Comprar</button>
+    <button class="btn btn-danger btn-lg m-3">Comprar</button>
+        
+    <router-link to="/DetalhedoProduto">
+      <button class="btn btn-danger btn-lg m-2">Detalhes</button>
+    </router-link> 
+    
   </div>
 </template>
