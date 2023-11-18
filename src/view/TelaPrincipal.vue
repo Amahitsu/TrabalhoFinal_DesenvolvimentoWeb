@@ -22,10 +22,7 @@ const produtos = ref([
   <!--Título da pagina -->
   <div class="container">
     <div class="my-5">
-      <span class="d-flex justify-content-center">
-        <titulo-principal title="MangaTown" />
-      </span>
-      <span class="d-flex justify-content-center ">
+      <span class="d-flex  ">
         <h3>Mercado online de mangás, ache o seu aqui!</h3>
       </span>
     </div>
@@ -37,19 +34,15 @@ const produtos = ref([
       <button class="btn btn-outline-dark mx-2">Pesquisar</button>
     </div>
   </div>
-  
+<br><br>
 
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-12" v-for="produto in produtos">
         <ExibirProduto
           :imageTitle="produto.title"
-          :imageUrl="produto.url"
-          
+          :imageUrl="produto.url"          
         />
-
       </div>
-
-
 
     </div>
 
