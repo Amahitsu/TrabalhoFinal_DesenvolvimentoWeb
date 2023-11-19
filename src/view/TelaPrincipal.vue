@@ -8,12 +8,14 @@ const titulo = ref("Mercado online para mangás");
 
 const produtos = ref([
   {
-  title: "rick and morty",
-  url: "https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg"
+  title: "Rick and morty",
+  url: "https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg",
+  preco: 34.40
 },
 {
   title: "One Piece 1",
-  url: "https://m.media-amazon.com/images/I/51W1ij6OH3L.jpg"
+  url: "https://m.media-amazon.com/images/I/51W1ij6OH3L.jpg",
+  preco: 50.00
 }
 ]);
 </script>
@@ -22,8 +24,8 @@ const produtos = ref([
   <!--Título da pagina -->
   <div class="container">
     <div class="my-5">
-      <span class="d-flex  ">
-        <h3>Mercado online de mangás, ache o seu aqui!</h3>
+      <span class="d-flex text-white ">
+        <h3 class = "fw-bolder" >Mercado online de mangás, ache o seu aqui!</h3>
       </span>
     </div>
     
@@ -31,7 +33,7 @@ const produtos = ref([
   <div class="container">
     <div class="d-flex">
       <input class="form-control" type="text" placeholder="Pesquisar produto" name="" id="">
-      <button class="btn btn-outline-dark mx-2">Pesquisar</button>
+      <button class="btn btn-outline-light mx-2">Pesquisar</button>
     </div>
   </div>
 <br><br>
@@ -40,7 +42,8 @@ const produtos = ref([
       <div class="col-lg-3 col-md-6 col-sm-12" v-for="produto in produtos">
         <ExibirProduto
           :imageTitle="produto.title"
-          :imageUrl="produto.url"          
+          :imageUrl="produto.url"    
+          :produtoPreco="produto.preco"      
         />
       </div>
 

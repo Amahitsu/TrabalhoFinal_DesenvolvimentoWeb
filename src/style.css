@@ -5,8 +5,11 @@ a:hover {
 
 a {
   font-weight: 500;
-  color: #ffffff;
+  color: #a30909;
   text-decoration: none;
 }
 
 
+body{
+  background-color: black;
+}
