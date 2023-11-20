@@ -28,6 +28,7 @@ function AdicionarCarrinho(){
     <button class="btn btn-danger btn-lg m-3" @click="() => AdicionarCarrinho()">  Comprar</button>
 
 
+
     <router-link to="/DetalheProduto">
       <button class="btn btn-danger btn-lg m-2">Detalhes</button>
     </router-link>
