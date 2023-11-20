@@ -1,12 +1,23 @@
 <script setup>
 import TituloPrincipal from '../components/TituloPrincipal.vue';
+import CarrinhoService from '../Carrinho';
+import { ref } from 'vue';
+
+const produtos = ref([])
+
+function BuscarProdutos() {
+    produtos.value = CarrinhoService.getProdutos();
+    console.log(produtos.value);
+}
+
+BuscarProdutos();
 
 </script>
 
 <template>
-    <titulo-principal title=" Seu Carrinho" />
+    <titulo-principal title=" Seu Carrinho" class=" container " />
     <div class="container">
-        <table class="table table-hover table-striped table-dark table-sm">
+        <table class="table table-hover table-striped table-dark">
             <thead>
                 <tr>
                     <th scope="col">Item</th>
@@ -15,21 +26,26 @@ import TituloPrincipal from '../components/TituloPrincipal.vue';
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr v-for="produto in produtos">
                     <td>
-                        <div class="d-flex">
-                            <img class="img-fluid" src="https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg"
-                                style="width: 5rem;" alt="">
-                            <h3 class="px-3 fw-bold fs-3">Rick And Morty</h3>
+                        <div class="d-flex ">
+                            <img class="img-fluid" :src="produto.imageUrl" style="width: 5rem;" :alt="produto.imageAlt">
+                            <h3 class="px-3 fw-bold fs-3">{{ produto.title }}</h3>
                         </div>
                     </td>
-                    <td>R$ 45</td>
+                    <td>R$ {{ produto.precoProduto.toFixed(2) }}</td>
                     <td>
                         <div class="d-flex">
-                            <button class="btn btn-light mx-2 fw-bolder fs-5">+</button>
-                            <input style="width: 5em;" class="form-control quantity" type="number" value="1" name="" id=""
-                                disabled>
-                            <button class="btn btn-light mx-2 fw-bolder fs-5">-</button>
+                            <button class="btn btn-light mx-2 fw-bolder fs-5" @click="() => {
+                                produto.quantidade++;
+                            }">+</button>
+                            <input style="width: 5em;" class="form-control quantity" type="number"
+                                :value="produto.quantidade" disabled>
+                            <button class="btn btn-light mx-2 fw-bolder fs-5" @click="() => {
+                                if (produto.quantidade > 1) {
+                                    produto.quantidade--;
+                                }
+                            }">-</button>
                         </div>
                     </td>
                 </tr>

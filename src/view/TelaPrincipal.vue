@@ -1,6 +1,5 @@
 <script setup>
-import TituloPrincipal from "../components/TituloPrincipal.vue";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import ExibirProduto from "../components/ExibirProduto.vue";
 
 const titulo = ref("Mercado online para mangás");
@@ -18,6 +17,17 @@ const produtos = ref([
   preco: 50.00
 }
 ]);
+
+const filtro = ref('');
+const ProdutosFiltrados = computed(() => {
+    if (filtro.value === '') {
+        return produtos.value;
+    } else {
+        return produtos.value.filter((produto) => {
+            return produto.title.toLowerCase().includes(filtro.value.toLowerCase());
+        });
+    }
+});
 </script>
 
 <template>
@@ -30,16 +40,16 @@ const produtos = ref([
     </div>
     
       <!--campo para buscar o produto-->
-  <div class="container">
+  <div class="container mb-3">
     <div class="d-flex">
-      <input class="form-control" type="text" placeholder="Pesquisar produto" name="" id="">
-      <button class="btn btn-outline-light mx-2">Pesquisar</button>
+      <input v-model="filtro" class="form-control " type="text" placeholder="Pesquisar produto..." name="" id="">
+      
     </div>
   </div>
-<br><br>
+
 
     <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-12" v-for="produto in produtos">
+      <div class="col-lg-3 col-md-6 col-sm-12" v-for="produto in ProdutosFiltrados">
         <ExibirProduto
           :imageTitle="produto.title"
           :imageUrl="produto.url"    

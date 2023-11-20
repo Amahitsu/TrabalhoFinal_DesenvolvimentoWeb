@@ -1,4 +1,7 @@
 <script setup>
+import CarrinhoService from '../Carrinho';
+import Produto from '../Produto'
+
 import { defineProps } from 'vue'
 const props = defineProps({
   imageUrl: String,
@@ -6,6 +9,12 @@ const props = defineProps({
   imageTitle: String,
   produtoPreco: Number
 })
+
+const produto = new Produto(props.imageTitle, props.imageUrl, props.imageAlt, null, props.produtoPreco);
+function AdicionarCarrinho(){
+  CarrinhoService.addProdutosCarrinho(produto)
+}
+
 </script>
 
 <template>
@@ -16,7 +25,8 @@ const props = defineProps({
     </span>
     <h3 class="d-flex justify-content-center fs-3 fw-bolder"> R$ {{ produtoPreco.toFixed(2) }}</h3>
 
-    <button class="btn btn-danger btn-lg m-3">Comprar</button>
+    <button class="btn btn-danger btn-lg m-3" @click="() => AdicionarCarrinho()">  Comprar</button>
+
 
     <router-link to="/DetalheProduto">
       <button class="btn btn-danger btn-lg m-2">Detalhes</button>
