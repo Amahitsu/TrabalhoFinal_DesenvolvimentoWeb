@@ -11,8 +11,9 @@ function BuscarProdutos() {
 }
 
 
-function DeletarProduto(){
-  CarrinhoService.deletarProdutoCarrinho(produtos.value)
+function DeletarProduto(id) {
+    CarrinhoService.deletarProdutoCarrinho(id)
+    window.location.reload()
 }
 
 BuscarProdutos();
@@ -51,16 +52,15 @@ BuscarProdutos();
                                 if (produto.quantidade > 1) {
                                     produto.quantidade--;
                                 }
-                            }">-</button>                       
+                            }">-</button>
                         </div>
                     </td>
-                    <td> 
+                    <td>
                         <div class="d-flex">
-                            <button class="btn btn-light mr-5" @click="() =>{
-                                CarrinhoService.DeletarProduto();
-                            }">Remover do carrinho</button>
+                            <button class="btn btn-light mr-5" @click="() => DeletarProduto(produto.id)">Remover do
+                                carrinho</button>
 
-                        </div> 
+                        </div>
                     </td>
                 </tr>
             </tbody>

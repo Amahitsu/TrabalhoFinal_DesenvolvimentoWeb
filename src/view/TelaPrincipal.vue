@@ -7,11 +7,13 @@ const titulo = ref("Mercado online para mangás");
 
 const produtos = ref([
   {
+  id: 1,
   title: "Rick and morty",
   url: "https://sm.ign.com/ign_br/tv/r/rick-morty/rick-morty_cs71.jpg",
   preco: 34.40
 },
 {
+  id: 2,
   title: "One Piece 1",
   url: "https://m.media-amazon.com/images/I/51W1ij6OH3L.jpg",
   preco: 50.00
@@ -51,6 +53,7 @@ const ProdutosFiltrados = computed(() => {
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-12" v-for="produto in ProdutosFiltrados">
         <ExibirProduto
+          :id="produto.id"
           :imageTitle="produto.title"
           :imageUrl="produto.url"    
           :produtoPreco="produto.preco"      

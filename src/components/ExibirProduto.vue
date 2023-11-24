@@ -4,13 +4,14 @@ import Produto from '../Produto'
 
 import { defineProps } from 'vue'
 const props = defineProps({
+  id: Number,
   imageUrl: String,
   imageAlt: String,
   imageTitle: String,
   produtoPreco: Number
 })
 
-const produto = new Produto(props.imageTitle, props.imageUrl, props.imageAlt, null, props.produtoPreco);
+const produto = new Produto(props.id, props.imageTitle, props.imageUrl, props.imageAlt, null, props.produtoPreco);
 function AdicionarCarrinho(){
   CarrinhoService.addProdutosCarrinho(produto)
 }
