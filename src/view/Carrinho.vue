@@ -60,7 +60,9 @@ BuscarProdutos();
                     <td>
                         <div class="d-flex card" style="width: 10rem;">
                             <div class=" card-body">
-                                <p class="car-text">R$ {{ produto.precoProduto * produto.quantidade }} </p>
+                                <p class="card-text">R$ {{
+                                    totalPreco = produto.precoProduto * produto.quantidade
+                                }} </p>
                             </div>
 
                         </div>
