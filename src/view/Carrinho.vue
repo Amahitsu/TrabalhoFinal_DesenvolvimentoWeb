@@ -18,6 +18,7 @@ function DeletarProduto(id) {
 
 BuscarProdutos();
 
+
 </script>
 
 <template>
@@ -29,6 +30,7 @@ BuscarProdutos();
                     <th scope="col">Item</th>
                     <th scope="col">Preço</th>
                     <th scope="col">Quantidade</th>
+                    <th scope="col">Total</th>
                     <th scope="col"> </th>
                 </tr>
             </thead>
@@ -56,8 +58,16 @@ BuscarProdutos();
                         </div>
                     </td>
                     <td>
+                        <div class="d-flex card" style="width: 10rem;">
+                            <div class=" card-body">
+                                <p class="car-text">R$ {{ produto.precoProduto * produto.quantidade }} </p>
+                            </div>
+
+                        </div>
+                    </td>
+                    <td>
                         <div class="d-flex">
-                            <button class="btn btn-light mr-5" @click="() => DeletarProduto(produto.id)">Remover do
+                            <button class="btn btn-light mr-3" @click="() => DeletarProduto(produto.id)">Remover do
                                 carrinho</button>
 
                         </div>

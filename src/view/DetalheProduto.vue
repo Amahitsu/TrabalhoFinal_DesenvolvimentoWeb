@@ -24,15 +24,15 @@ const produto = ref(
       </div>
 
     </div>
-    
-      <router-link to="/Carrinho">
-        <button class="btn btn-danger btn-lg m-2">Comprar</button>
-      </router-link> 
 
-      
-      <router-link to="/">
-        <button class="btn btn-danger btn-lg m-2">Voltar</button>
-      </router-link> 
+    <router-link to="/Carrinho">
+      <button class="btn btn-danger btn-lg m-2">Comprar</button>
+    </router-link>
+
+
+    <router-link to="/">
+      <button class="btn btn-danger btn-lg m-2">Voltar</button>
+    </router-link>
 
   </div>
 </template>
