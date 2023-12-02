@@ -10,7 +10,7 @@ import { createRouter, createWebHistory} from 'vue-router'
 const routes = [
     {path: '/', component: TelaPrincipal},
     {path: '/Carrinho', component: Carrinho},
-    {path: '/DetalheProduto', component: DetalheProduto},
+    {path: '/DetalheProduto/:id', component: DetalheProduto, props:true},
 ]
 const router = createRouter({
     history: createWebHistory(),

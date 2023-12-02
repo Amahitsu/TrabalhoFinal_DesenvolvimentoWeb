@@ -2,23 +2,58 @@
 import TituloPrincipal from '../components/TituloPrincipal.vue';
 import CarrinhoService from '../Carrinho';
 import { ref } from 'vue';
+import ApiChamada from '../ApiChamada';
 
 const produtos = ref([])
+const precoTotal = ref(0)
 
 function BuscarProdutos() {
     produtos.value = CarrinhoService.getProdutos();
-    console.log(produtos.value);
 }
-
 
 function DeletarProduto(id) {
     CarrinhoService.deletarProdutoCarrinho(id)
     window.location.reload()
 }
 
+function calculateTotalPrice() {
+    precoTotal.value = 0;
+    produtos.value.forEach(p => {
+        console.log(precoTotal.value);
+        console.log(p);
+        precoTotal.value += p.precoProduto * p.quantidade;
+    });
+}
+
+function decrementar(product) {
+    if (product.quantidade > 1) {
+        product.quantidade--;
+        atualizarTotal(product);
+    }
+}
+
+function incrementar(product) {
+    product.quantidade++;
+    atualizarTotal(product);
+}
+
+function atualizarTotal(product) {
+    calculateTotalPrice();
+    CarrinhoService.updateProduto(product);
+}
+
+function terminarCompra() {
+    produtos.value.forEach(p => {
+        ApiChamada.request("http://localhost:8090/produto?idProduto=" + p.id + "&quantidade=" + p.quantidade,
+            "POST");
+            CarrinhoService.deletarProdutoCarrinho(p)
+    });
+
+    alert("otario")
+    window.location.reload()
+}
+
 BuscarProdutos();
-
-
 </script>
 
 <template>
@@ -45,23 +80,17 @@ BuscarProdutos();
                     <td>R$ {{ produto.precoProduto.toFixed(2) }}</td>
                     <td>
                         <div class="d-flex">
-                            <button class="btn btn-light mx-2 fw-bolder fs-5" @click="() => {
-                                produto.quantidade++;
-                            }">+</button>
+                            <button class="btn btn-light mx-2 fw-bolder fs-5" @click="incrementar(produto)">+</button>
                             <input style="width: 5em;" class="form-control quantity" type="number"
                                 :value="produto.quantidade" disabled>
-                            <button class="btn btn-light mx-2 fw-bolder fs-5" @click="() => {
-                                if (produto.quantidade > 1) {
-                                    produto.quantidade--;
-                                }
-                            }">-</button>
+                            <button class="btn btn-light mx-2 fw-bolder fs-5" @click="decrementar(produto)">-</button>
                         </div>
                     </td>
                     <td>
                         <div class="d-flex card" style="width: 10rem;">
                             <div class=" card-body">
                                 <p class="card-text">R$ {{
-                                    totalPreco = produto.precoProduto * produto.quantidade
+                                    totalPreco = (produto.precoProduto * produto.quantidade).toFixed(2)
                                 }} </p>
                             </div>
 
@@ -75,9 +104,20 @@ BuscarProdutos();
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <th scope></th>
+                    <th scope></th>
+                    <th scope></th>
+                    <th scope>
+                        <router-link to="/">
+                            <button class="btn btn-outline-light m-2"> Continuar comprando </button>
+                        </router-link>
+                    </th>
+                    <th scope>
+                        <button class="btn btn-outline-light m-2" @click="terminarCompra"> Terminar Compra </button>
+                    </th>
+                </tr>
             </tbody>
         </table>
     </div>
 </template>
-
-<style></style>

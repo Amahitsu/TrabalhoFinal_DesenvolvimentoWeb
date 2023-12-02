@@ -30,7 +30,7 @@ function AdicionarCarrinho(){
 
 
 
-    <router-link to="/DetalheProduto">
+    <router-link :to="'/DetalheProduto/' + props.id">
       <button class="btn btn-danger btn-lg m-2">Detalhes</button>
     </router-link>
 
