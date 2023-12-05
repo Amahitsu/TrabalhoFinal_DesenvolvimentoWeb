@@ -49,7 +49,7 @@ function terminarCompra() {
             CarrinhoService.deletarProdutoCarrinho(p)
     });
 
-    alert("otario")
+    alert("Sua compra foi realizada com sucesso!")
     window.location.reload()
 }
 

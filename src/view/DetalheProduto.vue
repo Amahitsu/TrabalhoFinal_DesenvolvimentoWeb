@@ -1,6 +1,8 @@
 <script setup>
 import { ref, defineProps } from 'vue'
 import ApiChamada from '../ApiChamada';
+import CarrinhoService from '../Carrinho';
+import ExibirProduto from '../components/ExibirProduto.vue';
 
 const props = defineProps({
   id: Number
@@ -24,15 +26,15 @@ buscarProduto();
         <img width="500" class="img-fluid" :src="produto.imagem.url" :alt="produto.imagem.alt">
       </div>
       <div class="border border-danger me-3 mt-3 col p-3">
-        <h3>{{ produto.titulo }}</h3>
-        <h3>R$ {{ produto.preco.toFixed(2) }}</h3>
-        <h3>{{ produto.descricao }}</h3>
+      <h3 class= "text-center fw-bolder">{{ produto.titulo }}</h3>
+
+        <h5>Valor do produto: R$ {{ produto.preco.toFixed(2) }}</h5>
+        <p>{{ produto.descricao }}</p>      
       </div>
 
     </div>
-
     <router-link to="/Carrinho">
-      <button class="btn btn-danger btn-lg m-2">Comprar</button>
+      <button class="btn btn-danger btn-lg m-2" @click="() => ExibirProduto.AdicionarCarrinho()">Comprar</button>
     </router-link>
 
 
