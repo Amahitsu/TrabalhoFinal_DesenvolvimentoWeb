@@ -26,21 +26,18 @@ buscarProduto();
         <img width="500" class="img-fluid" :src="produto.imagem.url" :alt="produto.imagem.alt">
       </div>
       <div class="border border-danger me-3 mt-3 col p-3">
-      <h3 class= "text-center fw-bolder">{{ produto.titulo }}</h3>
-
-        <h5>Valor do produto: R$ {{ produto.preco.toFixed(2) }}</h5>
-        <p>{{ produto.descricao }}</p>      
+        <h3 class=" fw-bolder text-center">{{ produto.titulo }}</h3>
+        <h4 class=" text-center mt-2 ">Valor do produto: R$ {{ produto.preco.toFixed(2) }}</h4>
+        <h5 class="container  ">Descrição: {{ produto.descricao }}</h5>
       </div>
 
     </div>
-    <router-link to="/Carrinho">
-      <button class="btn btn-danger btn-lg m-2" @click="() => ExibirProduto.AdicionarCarrinho()">Comprar</button>
-    </router-link>
+    <div class="d-flex justify-content-end">
+      <router-link to="/">
+        <button class="btn btn-danger btn-lg m-3">Voltar</button>
+      </router-link>
 
-
-    <router-link to="/">
-      <button class="btn btn-danger btn-lg m-2">Voltar</button>
-    </router-link>
+    </div>
 
   </div>
 </template>
