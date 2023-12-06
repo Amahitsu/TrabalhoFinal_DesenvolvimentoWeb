@@ -1,6 +1,8 @@
 <script setup>
 import { ref, defineProps } from 'vue'
 import ApiChamada from '../ApiChamada';
+import CarrinhoService from '../Carrinho';
+import ExibirProduto from '../components/ExibirProduto.vue';
 
 const props = defineProps({
   id: Number

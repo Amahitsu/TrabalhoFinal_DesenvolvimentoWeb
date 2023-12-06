@@ -19,7 +19,7 @@ public class ProdutoModel {
     private Integer id;
     @Column(length = 250)
     private String titulo;
-    @Column(length = 800)
+    @Column(length = 2000)
     private String descricao;
     private Double preco;
     @OneToOne

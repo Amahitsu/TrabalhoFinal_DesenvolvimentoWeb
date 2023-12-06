@@ -28,7 +28,7 @@ function AdicionarCarrinho() {
     <span class="d-flex justify-content-center">
       <h3 class="text-center py-2 fs-2 fw-bolder"> {{ imageTitle }}</h3>
     </span>
-    <h3 class="d-flex justify-content-center fs-3 fw-bolder"> R$ {{ produtoPreco.toFixed(2) }}</h3>
+    <h3 class="d-flex justify-content-center fs-5 fw-bolder"> R$ {{ produtoPreco.toFixed(2) }}</h3>
 
     <div class="d-flex align-items-center justify-content-center">
 
