@@ -16,7 +16,7 @@ function DeletarProduto(id) {
     window.location.reload()
 }
 
-function calculateTotalPrice() {
+function CalcularPrecoTotal() {
     precoTotal.value = 0;
     produtos.value.forEach(p => {
         console.log(precoTotal.value);
@@ -32,24 +32,25 @@ function decrementar(product) {
     }
 }
 
-function incrementar(product) {
-    product.quantidade++;
-    atualizarTotal(product);
+function incrementar(produto) {
+    produto.quantidade++;
+    atualizarTotal(produto);
 }
 
-function atualizarTotal(product) {
-    calculateTotalPrice();
-    CarrinhoService.updateProduto(product);
+function atualizarTotal(produto) {
+    CalcularPrecoTotal();
+    CarrinhoService.updateProduto(produto);
 }
 
 function terminarCompra() {
     produtos.value.forEach(p => {
         ApiChamada.request("http://localhost:8090/produto?idProduto=" + p.id + "&quantidade=" + p.quantidade,
             "POST");
-            CarrinhoService.deletarProdutoCarrinho(p)
+        CarrinhoService.deletarProdutoCarrinho(p)
+
     });
 
-    alert("otario")
+    alert("Compra realizada com sucesso!")
     window.location.reload()
 }
 
@@ -74,7 +75,7 @@ BuscarProdutos();
                     <td>
                         <div class="d-flex ">
                             <img class="img-fluid" :src="produto.imageUrl" style="width: 5rem;" :alt="produto.imageAlt">
-                            <h3 class="px-3 fw-bold fs-3">{{ produto.title }}</h3>
+                            <h4 class="px-3 fw-bold fs-3">{{ produto.title }}</h4>
                         </div>
                     </td>
                     <td>R$ {{ produto.precoProduto.toFixed(2) }}</td>

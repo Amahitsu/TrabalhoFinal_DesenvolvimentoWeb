@@ -29,14 +29,14 @@ buscarTodos();
 <template>
   <!--Título da pagina -->
   <div class="container">
-    <div class="my-5">
+    <div class="d-flex justify-content-start ">
       <span class="d-flex text-white ">
         <h3 class="fw-bolder">Mercado online de mangás, ache o seu aqui!</h3>
       </span>
     </div>
 
     <!--campo para buscar o produto-->
-    <div class="container mb-3">
+    <div class="container mb-3 just">
       <div class="d-flex">
         <input v-model="filtro" class="form-control " type="text" placeholder="Pesquisar produto..." name="" id="">
 
@@ -44,8 +44,8 @@ buscarTodos();
     </div>
 
 
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-12" v-for="produto in ProdutosFiltrados">
+    <div class="row align-items-end">
+      <div class="col-lg-4 col-md-8 col-sm-12" v-for="produto in ProdutosFiltrados">
         <ExibirProduto :id="produto.id" :imageTitle="produto.titulo" :imageUrl="produto.imagem.url"
           :produtoPreco="produto.preco" />
       </div>
